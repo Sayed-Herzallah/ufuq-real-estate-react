@@ -1,0 +1,290 @@
+/* =============================================
+   Language Sidebar — Full Height Side Panel
+   ============================================= */
+
+/* Overlay — يغطي كل الشاشة */
+.lang-sidebar__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1998;          /* تحت الـ sidebar بس فوق كل حاجة تانية */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.lang-sidebar__overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Sidebar Panel */
+.lang-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 1999;          /* فوق كل حاجة حتى الـ navbar */
+  width: 300px;
+  max-width: 85vw;
+  height: 100%;
+  height: 100dvh;         /* يدعم الـ dynamic viewport على موبايل */
+  background: var(--color-dark-deep);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.5);
+  /* لا تضع overflow: hidden هنا */
+}
+
+/* AR: يفتح من اليمين */
+body.lang-ar .lang-sidebar {
+  right: 0;
+  left: auto;
+  transform: translateX(110%);
+  transition: transform 0.38s cubic-bezier(.4, 0, .2, 1);
+  border-radius: 16px 0 0 16px;
+}
+
+body.lang-ar .lang-sidebar.open {
+  transform: translateX(0);
+}
+
+/* EN: يفتح من اليسار */
+body.lang-en .lang-sidebar {
+  left: 0;
+  right: auto;
+  transform: translateX(-110%);
+  transition: transform 0.38s cubic-bezier(.4, 0, .2, 1);
+  border-radius: 0 16px 16px 0;
+}
+
+body.lang-en .lang-sidebar.open {
+  transform: translateX(0);
+}
+
+/* ── Header ── */
+.lang-sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1.5rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+body.lang-ar .lang-sidebar__header {
+  flex-direction: row-reverse;
+}
+
+.lang-sidebar__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+body.lang-ar .lang-sidebar__title {
+  flex-direction: row-reverse;
+}
+
+.lang-sidebar__close {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+
+.lang-sidebar__close:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ── Language List ── */
+.lang-sidebar__list {
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.lang-sidebar__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 1.1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  width: 100%;
+  text-align: start;
+  transition: background 0.22s ease,
+              border-color 0.22s ease,
+              transform 0.2s ease;
+}
+
+body.lang-ar .lang-sidebar__item {
+  flex-direction: row-reverse;
+}
+
+.lang-sidebar__item:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.lang-sidebar__item.active {
+  background: rgba(201, 168, 76, 0.13);
+  border-color: rgba(201, 168, 76, 0.45);
+}
+
+.lang-sidebar__flag {
+  font-size: 32px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.lang-sidebar__item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+body.lang-ar .lang-sidebar__item-text { text-align: right; }
+body.lang-en .lang-sidebar__item-text { text-align: left; }
+
+.lang-sidebar__item-label {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.lang-sidebar__item-native {
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 12.5px;
+}
+
+.lang-sidebar__check {
+  color: var(--color-gold);
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-inline-start: auto;
+}
+
+/* ── Mobile lang button in navbar ── */
+.navbar__mobile-actions {
+  display: none;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar__lang-btn {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, background 0.2s;
+}
+
+.navbar__lang-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+@media (max-width: 768px) {
+  .navbar__mobile-actions {
+    display: flex;
+  }
+}
+
+/* =============================================
+   Contact Toast
+   ============================================= */
+
+.contact__toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.25rem;
+  font-size: 14px;
+  font-weight: 500;
+  animation: toastIn 0.35s cubic-bezier(.22, .68, 0, 1.2);
+}
+
+body.lang-ar .contact__toast { flex-direction: row-reverse; text-align: right; }
+body.lang-en .contact__toast { flex-direction: row; text-align: left; }
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.contact__toast--success {
+  background: rgba(72, 187, 120, 0.15);
+  border: 1px solid rgba(72, 187, 120, 0.4);
+  color: #68d391;
+}
+
+.contact__toast--error {
+  background: rgba(224, 85, 85, 0.15);
+  border: 1px solid rgba(224, 85, 85, 0.4);
+  color: #fc8181;
+}
+
+/* Loading state */
+.contact__submit-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Spin */
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Shake on empty submit */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+.contact__submit.shake {
+  animation: shake 0.4s ease;
+}
+
+.contact__submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

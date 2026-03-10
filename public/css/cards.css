@@ -1,0 +1,271 @@
+/* =============================================
+   Properties Section
+   ============================================= */
+
+.properties__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+}
+
+.properties__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+body.lang-ar .properties__title  { text-align: right; order: 1; }
+body.lang-en .properties__title  { text-align: left;  order: 2; }
+
+.properties__title {
+  font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+  color: var(--color-text-dark);
+  font-weight: 400;
+}
+
+.properties__title .bold  { font-weight: 800; }
+.properties__title .light { font-weight: 300; color: #4a6080; }
+
+/* Filter tabs */
+.properties__filters {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+body.lang-ar .properties__filters { order: 2; }
+body.lang-en .properties__filters { order: 1; }
+
+.filter-btn {
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  background: transparent;
+  color: var(--color-dark);
+  border: 2px solid var(--color-dark);
+  font-family: inherit;
+  transition: background 0.22s ease, color 0.22s ease, transform 0.18s ease;
+}
+
+.filter-btn:hover {
+  background: var(--color-dark);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.filter-btn.active {
+  background: var(--color-dark);
+  color: #fff;
+}
+
+/* Divider */
+.properties__divider {
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(to left, transparent, var(--color-dark) 40%, transparent);
+  margin-bottom: 2rem;
+  opacity: 0.18;
+}
+
+/* Cards grid */
+.properties__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* Browse all */
+.properties__browse-wrap {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.browse-btn {
+  padding: 12px 44px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-dark);
+  background: transparent;
+  color: var(--color-dark);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.browse-btn:hover {
+  background: var(--color-dark);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* =============================================
+   Property Card — Standard
+   ============================================= */
+
+.prop-card {
+  background: #2d3f52;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.12);
+  transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.prop-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.22);
+}
+
+.prop-card__img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.prop-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s cubic-bezier(.25,.46,.45,.94);
+}
+
+.prop-card:hover .prop-card__img-wrap img {
+  transform: scale(1.07);
+}
+
+.prop-card__body {
+  padding: 1.25rem;
+}
+
+body.lang-ar .prop-card__body { text-align: right; }
+body.lang-en .prop-card__body { text-align: left; }
+
+.prop-card__price {
+  color: #fff;
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.prop-card__currency {
+  color: rgba(255,255,255,0.45);
+  font-size: 12px;
+  margin-bottom: 0.6rem;
+}
+
+.prop-card__title {
+  color: #fff;
+  font-size: 0.97rem;
+  font-weight: 700;
+  line-height: 1.45;
+  margin-bottom: 0.6rem;
+}
+
+.prop-card__location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+}
+
+body.lang-ar .prop-card__location { justify-content: flex-end; flex-direction: row-reverse; }
+body.lang-en .prop-card__location { justify-content: flex-start; flex-direction: row; }
+
+.prop-card__location svg {
+  flex-shrink: 0;
+  color: var(--color-red-pin);
+  fill: var(--color-red-pin);
+}
+
+.prop-card__divider {
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  margin-bottom: 0.9rem;
+}
+
+.prop-card__specs {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: rgba(255,255,255,0.55);
+  font-size: 13px;
+}
+
+body.lang-ar .prop-card__specs { justify-content: flex-end; flex-direction: row-reverse; }
+body.lang-en .prop-card__specs { justify-content: flex-start; flex-direction: row; }
+
+.prop-spec {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+body.lang-ar .prop-spec { flex-direction: row-reverse; }
+body.lang-en .prop-spec { flex-direction: row; }
+
+.prop-spec svg {
+  color: rgba(255,255,255,0.45);
+  flex-shrink: 0;
+}
+
+/* =============================================
+   Property Card — Overlay (first card)
+   ============================================= */
+
+.prop-card--overlay {
+  position: relative;
+  height: 420px;
+  background: transparent;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(.22,.68,0,1.2), box-shadow 0.3s ease;
+}
+
+.prop-card--overlay:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 55px rgba(0,0,0,0.38);
+}
+
+.prop-card--overlay .prop-card__img-fill {
+  position: absolute;
+  inset: 0;
+}
+
+.prop-card--overlay .prop-card__img-fill img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.55s cubic-bezier(.25,.46,.45,.94);
+}
+
+.prop-card--overlay:hover .prop-card__img-fill img {
+  transform: scale(1.07);
+}
+
+.prop-card--overlay .prop-card__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(18,28,42,0.97) 0%, rgba(18,28,42,0.3) 55%, transparent 100%);
+}
+
+.prop-card--overlay .prop-card__body {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.5rem;
+}

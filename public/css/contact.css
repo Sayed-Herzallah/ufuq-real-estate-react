@@ -1,0 +1,208 @@
+/* =============================================
+   Contact Section
+   ============================================= */
+
+.contact__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: var(--color-dark);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.contact__form-col { order: 1; }
+
+body.lang-en .contact__form-col { order: 2; }
+body.lang-en .contact__text-col { order: 1; }
+
+.contact__form-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.contact__form-row--full {
+  margin-bottom: 0.75rem;
+}
+
+/* Input wrapper */
+.input-wrap {
+  position: relative;
+  flex: 1;
+  width: 100%;
+}
+
+.input-wrap__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9aa5b4;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+  transition: color 0.2s;
+}
+
+body.lang-ar .input-wrap__icon { right: 14px; left: auto; }
+body.lang-en .input-wrap__icon { left: 14px; right: auto; }
+
+.input-wrap input,
+.input-wrap select {
+  width: 100%;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--color-text-dark);
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+body.lang-ar .input-wrap input,
+body.lang-ar .input-wrap select {
+  padding-right: 44px;
+  padding-left: 16px;
+  text-align: right;
+  direction: rtl;
+}
+
+body.lang-en .input-wrap input,
+body.lang-en .input-wrap select {
+  padding-left: 44px;
+  padding-right: 16px;
+  text-align: left;
+  direction: ltr;
+}
+
+.input-wrap input:focus,
+.input-wrap select:focus {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+}
+
+/* Icon turns gold on focus */
+.input-wrap:focus-within .input-wrap__icon {
+  color: var(--color-gold);
+}
+
+.input-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  color: #9aa5b4;
+}
+
+.input-wrap select.has-value {
+  color: var(--color-text-dark);
+}
+
+.input-wrap__chevron {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9aa5b4;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+body.lang-ar .input-wrap__chevron { left: 12px; right: auto; }
+body.lang-en .input-wrap__chevron { right: 12px; left: auto; }
+
+/* Submit button */
+.contact__submit-wrap {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.contact__submit {
+  width: 55%;
+  background: #4a6080;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact__submit:hover {
+  background: #5a7494;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+.contact__submit:active {
+  transform: translateY(0);
+}
+
+.contact__submit.success {
+  background: #48bb78;
+}
+
+/* Text side */
+.contact__text-col { order: 2; }
+
+body.lang-ar .contact__text-col { text-align: right; }
+body.lang-en .contact__text-col { text-align: left; }
+
+.contact__title {
+  color: #fff;
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.contact__title strong {
+  font-weight: 800;
+  display: block;
+}
+
+.contact__desc {
+  color: rgba(255,255,255,0.58);
+  font-size: 14px;
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+.contact__info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.contact__info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.68);
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.contact__info-item:hover {
+  color: rgba(255,255,255,0.9);
+}
+
+body.lang-ar .contact__info-item { flex-direction: row-reverse; }
+body.lang-en .contact__info-item { flex-direction: row; }
+
+.contact__info-item svg {
+  flex-shrink: 0;
+  color: rgba(255,255,255,0.5);
+}

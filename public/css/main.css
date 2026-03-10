@@ -1,0 +1,105 @@
+/* =============================================
+   UFUQ Real Estate — Global Styles & Variables
+   ============================================= */
+
+:root {
+  --color-dark:       #2a3a4b;
+  --color-dark-mid:   #354a5e;
+  --color-dark-deep:  #1e2d3d;
+  --color-bg:         #eef1f5;
+  --color-bg-card:    #f4f6f9;
+  --color-white:      #ffffff;
+  --color-gold:       #c9a84c;
+  --color-gold-light: #e8c97a;
+  --color-red-pin:    #e05555;
+  --color-text-muted: rgba(255,255,255,0.6);
+  --color-text-dim:   rgba(255,255,255,0.45);
+  --color-text-dark:  #1a2332;
+  --color-text-gray:  #718096;
+
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+
+  --shadow-sm:  0 2px 12px rgba(0,0,0,0.07);
+  --shadow-md:  0 6px 24px rgba(0,0,0,0.12);
+  --shadow-lg:  0 16px 50px rgba(0,0,0,0.2);
+
+  --transition: all 0.3s ease;
+
+  --font-ar: 'Cairo', sans-serif;
+  --font-en: 'Outfit', sans-serif;
+
+  --max-width: 1200px;
+  --page-px:   2.5rem;
+  --navbar-h:  68px;
+
+  /* Section spacing — consistent gap between all sections */
+  --section-gap: 2rem;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.lang-ar {
+  font-family: var(--font-ar);
+  direction: rtl;
+}
+body.lang-en {
+  font-family: var(--font-en);
+  direction: ltr;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-dark-deep); }
+::-webkit-scrollbar-thumb { background: var(--color-gold); border-radius: 3px; }
+
+/* Container */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--page-px);
+}
+
+/* Utility */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}
+
+/* =============================================
+   Scroll-reveal animation (add via JS IntersectionObserver)
+   ============================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(.22,.68,0,1.2), transform 0.65s cubic-bezier(.22,.68,0,1.2);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
