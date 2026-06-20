@@ -54,7 +54,7 @@ Ufuq-Real-Estate-React/
    ```
 4. Run Locally:
    ```bash
-   ${deps.next ? 'npm run dev' : (type === 'react' || type === 'angular' || type === 'backend') ? 'npm start' : 'Open index.html directly in your web browser'}
+   npm start
    ```
 
 ---
